@@ -1,5 +1,6 @@
 import django
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 from store.models import Address, Cart, Category, Order, Product
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistrationForm, AddressForm
@@ -7,7 +8,8 @@ from django.contrib import messages
 from django.views import View
 import decimal
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator # for Class Based Views
+from django.utils.decorators import method_decorator
+from django.utils.translation import gettext as _ 
 
 
 # Create your views here.
@@ -60,8 +62,9 @@ class RegistrationView(View):
     def post(self, request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            messages.success(request, "Congratulations! Registration Successful!")
+            messages.success(request, "Muvaffaqiyatli ro'yxatdan o'tdingiz !")
             form.save()
+            return redirect('store:login')
         return render(request, 'account/register.html', {'form': form})
         
 
@@ -180,12 +183,15 @@ def checkout(request):
     user = request.user
     address_id = request.GET.get('address')
     
-    address = get_object_or_404(Address, id=address_id)
+    address = get_object_or_404(Address, user=user)
     # Get all the products of User in Cart
     cart = Cart.objects.filter(user=user)
     for c in cart:
         # Saving all the products from Cart to Order
-        Order(user=user, address=address, product=c.product, quantity=c.quantity).save()
+        try:
+            Order(user=user, address=address, product=c.product, quantity=c.quantity).save()
+        except:
+            Order(user=user, address=get_object_or_404(Address, id=6), product=c.product, quantity=c.quantity).save()
         # And Deleting from Cart
         c.delete()
     return redirect('store:orders')
@@ -196,16 +202,13 @@ def orders(request):
     all_orders = Order.objects.filter(user=request.user).order_by('-ordered_date')
     return render(request, 'store/orders.html', {'orders': all_orders})
 
-
-
-
-
 def shop(request):
     return render(request, 'store/shop.html')
 
-
-
-
-
 def test(request):
     return render(request, 'store/test.html')
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('store:home')

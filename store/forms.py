@@ -13,27 +13,27 @@ from django.utils.translation import gettext, gettext_lazy as _
 
 
 class RegistrationForm(UserCreationForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password'}))
-    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password'}))
-    email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Parol'}))
+    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Parolni takrorlang'}))
+    email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'}))
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        labels = {'email': 'Email'}
-        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'})}
+        labels = {'email': 'Email', 'username': "Foydalanuvchi nomi"}
+        widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Foydalanuvchi nomi'})}
 
 
 class LoginForm(AuthenticationForm):
-    username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}))
-    password = forms.CharField(label=_("Password"), strip=False, widget=forms.PasswordInput(attrs={'autocomplete':'current-password', 'class':'form-control'}))
+    username = UsernameField(label="Foydalanuvchi nomi",widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}))
+    password = forms.CharField(label=_("Parol"), strip=False, widget=forms.PasswordInput(attrs={'autocomplete':'current-password', 'class':'form-control'}))
 
 
 class AddressForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = ['locality', 'city', 'state']
-        widgets = {'locality':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Popular Place like Restaurant, Religious Site, etc.'}), 'city':forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}), 'state':forms.TextInput(attrs={'class':'form-control', 'placeholder':'State or Province'})}
+        widgets = {'locality':forms.TextInput(attrs={'class':'form-control', 'placeholder':''}), 'city':forms.TextInput(attrs={'class':'form-control', 'placeholder':''}), 'state':forms.TextInput(attrs={'class':'form-control', 'placeholder':''})}
 
 
 class PasswordChangeForm(PasswordChangeForm):

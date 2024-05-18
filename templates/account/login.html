@@ -6,7 +6,7 @@
       <div class="container py-5">
         <div class="col-md-8 offset-2">
 
-        <h1 class="mb-5">Log In to Your Account</h1>
+        <h1 class="mb-5">Akkauntingizga kiring</h1>
         
         
         <div class="card mb-4" id="forms">
@@ -26,7 +26,7 @@
                         <small class="text-danger">{{fm.errors|striptags}}</small>
                     </div>
                 {% endfor %}
-                <button class="btn btn-primary" type="submit">Login</button>
+                <button class="btn btn-primary" type="submit">Kirish</button>
               </fieldset>
 
               {% if form.non_field_errors %}
@@ -45,8 +45,8 @@
 
             <hr>
 
-            Forgot Password? <a href="{% url 'store:password-reset' %}">Reset Now</a> <br>
-            New Member? <a href="{% url 'store:register' %}">Create an Account</a> 
+            Parolni untdingizmi ? <a href="{% url 'store:password-reset' %}">Parolni tiklash</a> <br>
+            Akkauntingiz yo'qmi ? <a href="{% url 'store:register' %}">Ro'yxatdan o'tish</a> 
             
           </div>
         </div>
