@@ -13,8 +13,8 @@ from django.utils.translation import gettext, gettext_lazy as _
 
 
 class RegistrationForm(UserCreationForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Parol'}))
-    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Parolni takrorlang'}))
+    password1 = forms.CharField(label='Parol', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Parol'}))
+    password2 = forms.CharField(label="Parolni takrorlang", widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Parolni takrorlang'}))
     email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'}))
 
     class Meta:

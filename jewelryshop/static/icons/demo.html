@@ -3759,7 +3759,7 @@
         elem.innerHTML = elem.innerHTML.replace(regex, function (match, $1, $2) {
           if ($1 === 'width' || $1 === 'height') {
             if (value) {
-              return $1 + '="' + value + '"'
+              return 1 + '="' + value + '"'
             } else {
               return ''
             }
