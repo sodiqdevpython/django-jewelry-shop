@@ -3,13 +3,13 @@
 
     {% block content %}
 
-      <div class="container py-5">
+      <div class="container">
         <div class="col-md-8 offset-2">
 
-        <h1 class="mb-5">Log In to Your Account</h1>
+        <h4 style="position: relative; right: 20%;" class="mb-5">Akkauntingizga kiring</h4>
         
         
-        <div class="card mb-4" id="forms">
+        <div style="position: relative; right: 20%;" class="card mb-4" id="forms">
           
           <div class="card-body">
               
@@ -26,7 +26,7 @@
                         <small class="text-danger">{{fm.errors|striptags}}</small>
                     </div>
                 {% endfor %}
-                <button class="btn btn-primary" type="submit">Login</button>
+                <button class="btn btn-primary" type="submit">Kirish</button>
               </fieldset>
 
               {% if form.non_field_errors %}
@@ -45,8 +45,7 @@
 
             <hr>
 
-            Forgot Password? <a href="{% url 'store:password-reset' %}">Reset Now</a> <br>
-            New Member? <a href="{% url 'store:register' %}">Create an Account</a> 
+            Akkauntingiz yo'qmi ? <a href="{% url 'store:register' %}">Ro'yxatdan o'tish</a> 
             
           </div>
         </div>
