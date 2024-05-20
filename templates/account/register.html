@@ -3,16 +3,15 @@
 
     {% block content %}
 
-      <div class="container py-5">
+      <div style="position: relative; right: 20%; width: 110%;" class="container py-5">
         <div class="col-md-8 offset-2">
 
-        <h1 class="mb-5">Create Your Account</h1>
-        
+        <h4 class="mb-5">Ro'yxatdan o'tish</h4>
         
         <div class="card mb-4" id="forms">
           <div class="card-header">
             <small>
-            With a this account, you can save time during checkout, access your shopping bag from any device and view your order history.
+              Ushbu akkaunt yordamida siz to'lov vaqtida vaqtni tejashingiz, xarid qilish sumkangizga istalgan qurilmadan kirishingiz va buyurtmalar tarixini ko'rishingiz mumkin.
             </small>
           </div>
           <div class="card-body">
@@ -30,7 +29,7 @@
                         <small class="text-danger">{{fm.errors|striptags}}</small>
                     </div>
                 {% endfor %}
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Saqlash</button>
               </fieldset>
 
               {% if form.non_field_errors %}
@@ -45,7 +44,7 @@
 
             <hr>
 
-            Already have an account? <a href="{% url 'store:login' %}">Log In </a>
+            Hisobingiz bormi? <a href="{% url 'store:login' %}">Kirish </a>
             
           </div>
         </div>
