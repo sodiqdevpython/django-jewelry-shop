@@ -100,8 +100,8 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'jewelryshop/static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Automatically Created on Production
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'jewelryshop/static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Automatically Created on Production
 
 # Settings for Media
 MEDIA_URL = '/media/'
@@ -240,7 +240,6 @@ JAZZMIN_SETTINGS = {
     "changeform_format": "horizontal_tabs",
     # override change forms on a per modeladmin basis
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
-    # Add a language dropdown into the admin
 }
 
 JAZZMIN_UI_TWEAKS = {
